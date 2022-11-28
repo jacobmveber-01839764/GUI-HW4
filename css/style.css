@@ -38,8 +38,13 @@ body {
   table-layout: fixed;    /* Lets width of cells be set */
 }
 
-#table-container {
+#tabs {
   overflow: auto;         /* Vertical Scrolling */
-  overflow-x: scroll;     /* Horizontal Scrolling */
+  overflow-x: auto;     /* Horizontal Scrolling */
+  max-height: 100%;
+  width: 100%;
+}
+
+#table-container {
   height: 70%;
 }

@@ -23,6 +23,31 @@ $(function() {
     });
   });
 
+  // Create where to throw tabs
+  $( "#tabs" ).tabs();
+  var tabCounter = 0;
+
+  function newTab(minX, maxX, minY, maxY) {
+    // Tab ID
+    tabCounter++;
+
+    // Add Tab Label
+    $("#tabs-nav").append(
+      "<li><a href='#tab" + tabCounter + "'>[" + minX + ", " + maxX + "] x [" + minY + ", " + maxY + "]</li>"
+    );
+
+    // Add Tab table container
+    $("#tabs").append(
+      "<div id='tab" + tabCounter + "'></div>"
+    );
+
+    // Refresh Added tabs
+    $("#tabs").tabs("refresh");
+
+    // Open the new tab
+    $("#tabs-nav").find('a[href="#tab' + tabCounter + '"]').trigger("click");
+  };
+
   // Create function to determine when max is greater than min
   jQuery.validator.addMethod("greater",
       function (value, element, param) {
@@ -31,12 +56,11 @@ $(function() {
       }
   );
 
-  // Form validation
+  // jQuery validation
   $("#mult-form").validate({
     rules: {
       minX: {
-        required: true,
-        range: [-50, 50]
+         range: [-50, 50]
       },
       maxX:  {
         required: true,
@@ -69,18 +93,23 @@ $(function() {
     // On valid generate multiplaction table
     submitHandler: function(form) {
       if ($("#mult-form").valid()) {
+
         var minY = $("#minY-slider").slider("option", "value");
         var maxY = $("#maxY-slider").slider("option", "value");
         var minX = $("#minX-slider").slider("option", "value");
         var maxX = $("#maxX-slider").slider("option", "value");
 
+        newTab(minX, maxX, minY, maxY);
+
         // Create Table
-        var table = document.getElementById("mult-table");
-        table.innerHTML = ""; // Clear any cells
+        var table = document.createElement("table");
+        table.classList.add('table');
+        table.classList.add('table-striped');
 
         for (let i = 0; i <= maxY - minY + 1; i++) {
           // Iterate through rows
           var row = table.insertRow(i);
+
           for (let j = 0; j <= maxX - minX + 1; j++) {
             // Iterate through collumns
             var col = row.insertCell(j);
@@ -103,12 +132,16 @@ $(function() {
             }
 
             col.style.width = '100px';
-          }
-        }
-      }
 
-      // Prevent page redirect
-      return false;
+          }
+
+
+        }
+        $("#tab" + tabCounter).append(table);
+
+        // Prevent page redirect
+        return false;
+      }
     }
   });
 });

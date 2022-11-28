@@ -28,18 +28,6 @@ Email: jacob_veber@student.uml.edu
         <h2 class="fs-4 text-light">Enter 4 numbers below.</h2>
         <div class="row g-3">
           <div class="form-group col-sm">
-            <label for="minY" class="form-label text-light">Minimum Y Value (-50 to 50): </label>
-            <input class="slider-value" name="minY" type="number" id="minY-value">
-            <div class="slider"  id="minY-slider">
-            </div>
-          </div>
-          <div class="form-group col-sm">
-            <label for="maxY" class="form-label text-light">Maximum Y Value (-50 to 50): </label>
-            <input class="slider-value" name="maxY" type="number" id="maxY-value">
-            <div class="slider"  id="maxY-slider">
-            </div>
-          </div>
-          <div class="form-group col-sm">
             <label for="minX" class="form-label text-light">Minimum X Value (-50 to 50): </label>
             <input class="slider-value" name="minX" type="number" id="minX-value">
             <div class="slider"  id="minX-slider">
@@ -51,15 +39,30 @@ Email: jacob_veber@student.uml.edu
             <div class="slider"  id="maxX-slider">
             </div>
           </div>
+          <div class="form-group col-sm">
+            <label for="minY" class="form-label text-light">Minimum Y Value (-50 to 50): </label>
+            <input class="slider-value" name="minY" type="number" id="minY-value">
+            <div class="slider"  id="minY-slider">
+            </div>
+          </div>
+          <div class="form-group col-sm">
+            <label for="maxY" class="form-label text-light">Maximum Y Value (-50 to 50): </label>
+            <input class="slider-value" name="maxY" type="number" id="maxY-value">
+            <div class="slider"  id="maxY-slider">
+            </div>
+          </div>
         </div>
         <div class="container">
-          <input type="submit" class="submit btn btn-purple my-3" value="Update" id="submit-button"></input>
+          <input type="submit" class="submit btn btn-purple my-3" value="Add Table" id="submit-button"></input>
         </div>
       </form>
 
       <div class="container" id="table-container">
-        <table id="mult-table" class="table table-light table-striped-columns">
-        </table>
+        <div id="tabs">
+          <ul id="tabs-nav">
+
+          </ul>
+        </div>
       </div>
     </main>
 
